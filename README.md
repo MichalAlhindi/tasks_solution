@@ -62,6 +62,8 @@ For example, this how my MySQL Workbench looks like after testing the app:
 
 ## How To Use:
 ![alt text](readme_pics/image.png)
+
+On the top left of the screen is the login/logout button
 ### To add a new task: 
 Write in a title, a description, and click on 'Add a Task'
 
@@ -69,6 +71,17 @@ Then you will see your tasks listed below.
 ### To remove, edit, or mark task as completed: 
 Click on the icons below the task
 
+### Authentication:
+User must be authenticate with google in order to add, edit and delete tasks.
+
+If the user is not connected it will have an alert:
+![alt text](readme_pics/image5.png)
+
+User can still see tasks even if they are not logged in.
+
+After clicking on 'enter with google' you will see this screen:
+
+![alt text](readme_pics/image6.png)
 ### Sorting:
 You can sort your task from oldest to newest or otherwise, as you wish. 
 

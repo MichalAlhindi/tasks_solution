@@ -50,7 +50,10 @@ function App() {
   };
 
   const handleAddTask = async () => {
-    if (!user) return; // Prevent action if not authenticated
+    if (!user) {
+      alert("Please log in with Google to add a task.");
+      return; // Prevent action if not authenticated
+    }
     const newTask = { title: newTitle, description: newDescription, completed: false };
     try {
       await API.post('/tasks', newTask);
@@ -63,7 +66,10 @@ function App() {
   };
 
   const handleDeleteTask = async (id) => {
-    if (!user) return; // Prevent action if not authenticated
+    if (!user) {
+      alert("Please log in with Google to delete a task.");
+      return; // Prevent action if not authenticated
+    } // Prevent action if not authenticated
     try {
       await API.delete(`/tasks/${id}`);
       fetchTasks(); // Refresh tasks after deletion
@@ -78,7 +84,10 @@ function App() {
   };
 
   const handleUpdateTask = async () => {
-    if (!user) return; // Prevent action if not authenticated
+    if (!user) {
+      alert("Please log in with Google to edit a task.");
+      return; // Prevent action if not authenticated
+    }// Prevent action if not authenticated
     if (currentTask) {
       try {
         await API.put(`/tasks/${currentTask.id}`, currentTask);
@@ -92,7 +101,10 @@ function App() {
   };
 
   const handleCompleteTask = async (task) => {
-    if (!user) return; // Prevent action if not authenticated
+    if (!user) {
+      alert("Please log in with Google to complete a task.");
+      return; // Prevent action if not authenticated
+    } // Prevent action if not authenticated
     const taskToComplete = {
       ...task,
       completed: true,
