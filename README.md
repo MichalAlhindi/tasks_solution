@@ -48,6 +48,7 @@ The frontend should now be running at http://localhost:3000.
 
 ## API Endpoints:
 - GET /tasks: Get all tasks
+- GET /tasks/{id}: get a specific task
 - POST /tasks: Create a new task
 - PUT /tasks/{id}: Update a task
 - DELETE /tasks/{id}: Delete a task
