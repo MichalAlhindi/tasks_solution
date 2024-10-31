@@ -1,26 +1,50 @@
+/* General layout */
 body {
-  background-color: #f5f3f3; /* Light background */
-  color: #2e2e2e; /* Dark text for contrast */
+  background-color: #f5f3f3;
+  color: #2e2e2e;
   overflow: hidden;
+  font-family: Arial, sans-serif;
 }
 
 h1 {
   text-align: center;
-  color: #d8addd; 
+  color: #d8addd;
 }
 
+/* Task wrapper */
 .todo-wrapper {
-  background: #e0f7fa; /* Light blue */
-  padding: 2%;
+  background: #e0f7fa;
+  padding: 3%;
   width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 3%;
-  max-height: 80vh;
+  margin: 2% auto;
+  max-height: 70vh; /* Reduce height to prevent overflow */
   overflow-y: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   box-shadow: 0px 5px 7px rgba(27, 27, 27, 0.5);
 }
 
+/* Google authentication button */
+.google-auth-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  padding: 8px 12px; /* Smaller padding for compact size */
+  background-color: #4285F4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px; /* Smaller font size */
+  font-weight: bold;
+  z-index: 1000;
+}
+
+.google-auth-button:hover {
+  background-color: #357AE8;
+}
+
+/* Task input */
 .todo-input {
   display: flex;
   align-items: center;
@@ -40,22 +64,23 @@ h1 {
 .todo-input-item label {
   font-weight: bold;
   margin-bottom: 10px;
-  color: #d8addd; /* Light pink */
+  color: #d8addd;
 }
 
 .todo-input-item input {
   padding: 8px;
-  border: 1px solid #d8addd; /* Light pink */
+  border: 1px solid #d8addd;
   width: 250px;
   border-radius: 5px;
 }
 
 .todo-input-item input:focus {
-  outline: 2px solid rgb(0, 230, 122); /* Green */
+  outline: 2px solid rgb(0, 230, 122);
 }
 
+/* Primary button */
 .primaryBtn {
-  background-color: #d8addd; /* Light pink */
+  background-color: #d8addd;
   color: white;
   border: none;
   border-radius: 5px;
@@ -66,11 +91,12 @@ h1 {
 }
 
 .primaryBtn:hover {
-  background-color: #d8addd; /* Darker pink */
+  background-color: #d8addd;
 }
 
+/* Secondary buttons */
 .secondaryBtn {
-  background-color: #90caf9; /* Light blue */
+  background-color: #90caf9;
   color: white;
   border: none;
   border-radius: 5px;
@@ -81,33 +107,28 @@ h1 {
 }
 
 .active {
-  background-color: #cca2bc; /* Light pink */
+  background-color: #cca2bc;
 }
 
+/* Task list */
 .todo-list {
   display: flex;
   flex-direction: column;
 }
 
-.btn-area {
-  margin-bottom: 15px;
-}
-
 .todo-list-item {
-  background-color: #b3e5fc; /* Light blue */
+  background-color: #b3e5fc;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding: 6px;
   margin-bottom: 10px;
   box-shadow: 0px 3px 5px rgba(43, 42, 42, 0.2);
 }
 
 .todo-list-item h3 {
-  font-size: 25px;
-  color: #e29eea; 
+  font-size: 20px;
+  color: #e29eea;
   font-weight: bold;
   margin: 0;
 }
@@ -119,7 +140,7 @@ h1 {
 }
 
 .icon {
-  font-size: 30px;
+  font-size: 25px;
   cursor: pointer;
 }
 
@@ -128,18 +149,19 @@ h1 {
 }
 
 .check-icon {
-  font-size: 25px;
+  font-size: 20px;
   margin-left: 10px;
-  color: #ff66b3; /* Light pink */
+  color: #ff66b3;
   cursor: pointer;
 }
 
 .check-icon:hover {
-  color: #ff4d94; /* Darker pink */
+  color: #ff4d94;
 }
 
+/* Edit wrapper */
 .edit__wrapper {
-  background-color: #b3e5fc; /* Light blue */
+  background-color: #b3e5fc;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -157,20 +179,21 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   width: fit-content;
 }
 
+/* Sorting dropdown and buttons area */
 .btn-area {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Space between the left group and the dropdown */
+  justify-content: space-between;
   margin-bottom: 15px;
 }
 
 .btn-group {
   display: flex;
-  gap: 10px; /* Space between "My Tasks" and "Completed" buttons */
+  gap: 10px;
 }
 
 .sort-dropdown {
@@ -182,13 +205,13 @@ h1 {
 
 .sort-dropdown label {
   margin-right: 8px;
-  color: #d8addd; /* Light pink */
+  color: #d8addd;
   font-weight: bold;
 }
 
 .sort-dropdown select {
   padding: 5px;
-  border: 1px solid #d8addd; /* Light pink */
+  border: 1px solid #d8addd;
   border-radius: 5px;
   background-color: #ffffff;
   color: #2e2e2e;
@@ -196,5 +219,15 @@ h1 {
 }
 
 .sort-dropdown select:focus {
-  outline: 2px solid #90caf9; /* Light blue */
+  outline: 2px solid #90caf9;
+}
+
+/* Logout button */
+.logoutBtn {
+  background-color: #d8addd;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
 }

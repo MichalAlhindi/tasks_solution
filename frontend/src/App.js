@@ -3,6 +3,7 @@ import API from './api';
 import './App.css';
 import { AiOutlineDelete, AiOutlineEdit } from 'react-icons/ai';
 import { BsCheckLg } from 'react-icons/bs';
+import { GoogleLogin } from '@react-oauth/google';
 
 function App() {
   const [isCompleteScreen, setIsCompleteScreen] = useState(false);
@@ -11,7 +12,8 @@ function App() {
   const [newTitle, setNewTitle] = useState('');
   const [newDescription, setNewDescription] = useState('');
   const [currentEditIndex, setCurrentEditIndex] = useState(null);
-  const [sortOrder, setSortOrder] = useState('oldest'); // Sort state for ascending/descending order
+  const [sortOrder, setSortOrder] = useState('oldest');
+  const [user, setUser] = useState(null); // User state for authentication
 
   useEffect(() => {
     fetchTasks();
@@ -37,7 +39,18 @@ function App() {
     setSortOrder(event.target.value);
   };
 
+  const handleGoogleLogin = (credentialResponse) => {
+    const { credential } = credentialResponse;
+    const userData = JSON.parse(atob(credential.split('.')[1])); // Decode JWT to get user data
+    setUser(userData); // Set user state
+  };
+
+  const handleLogout = () => {
+    setUser(null); // Clear user state on logout
+  };
+
   const handleAddTask = async () => {
+    if (!user) return; // Prevent action if not authenticated
     const newTask = { title: newTitle, description: newDescription, completed: false };
     try {
       await API.post('/tasks', newTask);
@@ -50,6 +63,7 @@ function App() {
   };
 
   const handleDeleteTask = async (id) => {
+    if (!user) return; // Prevent action if not authenticated
     try {
       await API.delete(`/tasks/${id}`);
       fetchTasks(); // Refresh tasks after deletion
@@ -64,6 +78,7 @@ function App() {
   };
 
   const handleUpdateTask = async () => {
+    if (!user) return; // Prevent action if not authenticated
     if (currentTask) {
       try {
         await API.put(`/tasks/${currentTask.id}`, currentTask);
@@ -77,6 +92,7 @@ function App() {
   };
 
   const handleCompleteTask = async (task) => {
+    if (!user) return; // Prevent action if not authenticated
     const taskToComplete = {
       ...task,
       completed: true,
@@ -91,6 +107,18 @@ function App() {
 
   return (
     <div className="App">
+      
+      <div className="google-auth-container">
+        {!user ? (
+          <GoogleLogin
+            onSuccess={handleGoogleLogin}
+            onError={(error) => console.error('Login failed:', error)}
+            className="google-auth-button"
+          />
+        ) : (
+          <button onClick={handleLogout} className="logoutBtn">Logout</button>
+        )}
+      </div>
       <h1>Task Manager</h1>
 
       <div className="todo-wrapper">
@@ -121,20 +149,20 @@ function App() {
         </div>
 
         <div className="btn-area">
-        <div className="btn-group">
-    <button
-      className={`secondaryBtn ${!isCompleteScreen && 'active'}`}
-      onClick={() => setIsCompleteScreen(false)}
-    >
-      My Tasks
-    </button>
-    <button
-      className={`secondaryBtn ${isCompleteScreen && 'active'}`}
-      onClick={() => setIsCompleteScreen(true)}
-    >
-      Completed
-    </button>
-  </div>
+          <div className="btn-group">
+            <button
+              className={`secondaryBtn ${!isCompleteScreen && 'active'}`}
+              onClick={() => setIsCompleteScreen(false)}
+            >
+              My Tasks
+            </button>
+            <button
+              className={`secondaryBtn ${isCompleteScreen && 'active'}`}
+              onClick={() => setIsCompleteScreen(true)}
+            >
+              Completed
+            </button>
+          </div>
           <div className="sort-dropdown">
             <label>Sort by:</label>
             <select value={sortOrder} onChange={handleSortChange}>
@@ -206,6 +234,8 @@ function App() {
             </div>
           ))}
         </div>
+
+        
       </div>
     </div>
   );
