@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Boolean
 from database import Base
 
+# Define the Task model
 class Task(Base):
     __tablename__ = "tasks"
     id = Column(Integer, primary_key=True, index=True)

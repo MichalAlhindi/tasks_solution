@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 
+# Schema for Task
 class TaskBase(BaseModel):
     title: str
     description: str
