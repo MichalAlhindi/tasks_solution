@@ -57,10 +57,10 @@ I used MySQL 8.0 as my DB. The backend should automatically create a table calle
 
 For example, this how my MySQL Workbench looks like after testing the app:
 
-![alt text](image-3.png)
+![alt text](readme_pics\image-3.png)
 
 ## How To Use:
-![alt text](image-1.png)
+![alt text](readme_pics\image-1.png)
 ### To add a new task: 
 Write in a title, a description, and click on 'Add a Task'
 
@@ -74,7 +74,7 @@ You can sort your task from oldest to newest or otherwise, as you wish.
 ### Completed Tasks:
 Once you complete a task, it moves automatically to the completed tasks tab:
 
-![alt text](image-2.png)
+![alt text](readme_pics\image-2.png)
 
 ## Author
 Michal Alhindi
