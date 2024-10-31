@@ -1,0 +1,44 @@
+/* src/index.css */
+
+html, body {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #eef2f5;
+  margin: 0;
+  color: #444;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+a {
+  color: #2b5797;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #1e3f6f;
+}
+
+p {
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+
+.container {
+  padding: 20px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 40px;
+}
